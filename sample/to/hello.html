@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+/>
+<style>
+*{
+    margin:0;
+    padding: 0;
+}
+.tab {
+  display: flex;
+  justify-content: space-around;
+  /*background-color: aquamarine;*/
+  opacity: 0.7;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 3px;
+  margin: 15px;
+}
+.tab.active{
+    opacity: 1;
+}
+
+.navtab li{
+    list-style-type: none;
+}
+.addplace input{
+    height: 100%;
+    width: 60%;
+    padding: 5px;
+    /* margin */
+    /* width: auto; */
+    font-size: 20px;
+    /* border: 1px solid rgb(249, 247, 247); */
+    /* border-radius: 5px; */
+    border: none;
+    background-color: aliceblue;
+}
+.addplace button{
+    /* position: absolute; */
+    height: 100%;
+    font-size: 20px;
+    padding: 5px;
+    /* padding-left: 2px; */
+    /* margin-left: 0; */
+    /* width: 60px; */
+    /* float: right; */
+    background-color:  rgb(126, 160, 172);
+    /* border: 1px solid rgb(126, 160, 172); */
+    /* border: 1px solid rgb(249, 247, 247); */
+    border-right: none;
+    /* border-bottom */
+    /* border-radius: 3px; */
+    /* outline: none; */
+}
+
+.navtab li button{
+    /* outline: none; */
+    /* background-color:yellow; */
+    font-size: 20px;
+    /* width: 33%; */
+    border: none;
+    /* background-color: transparent; */
+    /* line-height: 15px; */
+    margin-left: none;
+}
+.navtab li button:hover{
+    /* color: blue; */
+    background-color: brown;
+}
+#tabBody{
+    background-color: aliceblue;
+    max-height: 250px;
+    overflow-y: auto;
+    /* margin-bottom: 2px; */
+}
+.container{
+    width: 300px;
+}
+.maincontent{
+    height: 25px;
+    /* margin-bottom: 3px; */
+    border: 1px solid rgb(132, 114, 114);
+    margin-bottom: 3px;
+    border-radius: 2px;
+ /* border: 3px; */
+}
+.maincontent span{
+    font-size: 20px;
+}
+.maincontent li i{
+    float: right;
+    /* padding: 5px; */
+}
+.maincontent li{
+    padding: 5px;
+}
+.maincontent li input:checked{
+    text-decoration: line-through;
+}
+.maincontent:last-child{
+    margin-bottom: 0;
+}
+li{
+    list-style-type: none;
+}
+.clear {
+    background-color: green;
+    /* position: absolute; */
+    /* align-items: end; */
+    text-align: right;
+}
+.clear button{
+   font-size: 15px;
+ margin:3px 3px 3px 0px;
+ border-radius: 4px;
+ font-family: sans-serif;
+ border: none;
+}
+#id{
+    height: 100%;
+    width: 15px;
+}
+.searchbar{
+    height: 100%;
+    margin: 10px 0px;
+}
+.searchbar input{
+    font-size: 20px;
+
+}
+.stripe{
+	text-decoration: line-through;
+}
+
+
+</style>
+</head>
+<body>
+<div class="container">
+<form name="myForm"  id="my_form" class="addplace">
+ <input type="text" name="formname" id="fname" placeholder="Add task">
+ <button id="btn" type="submit">ADD</button>
+</form>
+<div class="searchbar">
+    <input type="text" id="searchitem">
+   <i class="fa fa-search" aria-hidden="true" id="Search" onclick="_search()"></i>
+</div>
+<div id="tabWrapper" class="tab"></div>
+<div id="tabBody"></div>
+<div class="clear" > <button onclick="_clear()">CLEAR</button></div>
+  <!-- <input type="text" id="fname" name="formname" placeholder="Add task"> -->
+
+<!-- <div id="_count"> pfdfdf</div> -->
+</div>
+<script>
+   	let tabList=[
+	    {
+	        name:'All',
+	        isActive:true
+	    },
+	    {
+	        name:'Pending',
+	        isActive:   false 
+	    },
+	    {
+	        name:'Completed',
+	        isActive:false
+	    }
+   	];
+   	const form=document.getElementById('my_form');
+   		form.addEventListener("submit",function submitform(event){
+    	event.preventDefault();
+    let x=document.forms["myForm"]["formname"].value;
+    let active_element = null;
+    if(x==""){
+        alert("should not empty value");
+        return false;
+    }else{
+        let allIndex=tabList.findIndex((e)=>e.isActive);
+	        createList(x,allIndex);
+	        form.reset();
+	    }
+   	});
+   let Result=document.getElementById("_count");
+   let listArr=[];
+   let myList='';
+   let tabnav= document.getElementById('tabWrapper');
+   let _tabBody=document.getElementById('tabBody')
+   	tabList.map((data)=>{
+	    myList+=`<ul class="navtab">
+		    <li>
+		   		<button onclick="display(this)" value=${data["name"]}>`+
+		        data["name"]+`</button>
+		    </li>
+		</ul>`;
+   	})
+   	tabnav.innerHTML=myList;
+
+function createList(text,all_tab){
+    listArr.push({name:text,status:false,found:false});
+    display(listArr);
+}
+let _searchitems=document.getElementById("searchitem");
+function display(_values, sortArr){
+	let is_from_sort = false;
+	if(_values){
+		active_element  = _values;
+	}else{
+		_values = active_element;
+	}
+	if(sortArr){
+		is_from_sort = true;
+	}
+    if(listArr.length>=0){
+        let _mylist='';
+        let temp= sortArr ? sortArr : listArr;
+
+        // if(!is_from_sort){
+       		if(_values['value'] == 'Pending'){
+		  		temp = sortArr ? sortArr.filter(e=> {return !e.status}) : listArr.filter(e=> {return !e.status});
+		  	}
+		  	if(_values['value'] == 'Completed'){
+		  		temp = sortArr ? sortArr.filter(e=> {return e.status}) : listArr.filter(e=> {return e.status});
+		  	}
+        // }
+       
+        temp.map((data,index)=>{
+            _mylist+=data['status']?
+			    `<ul class="maincontent">
+			        <li class="stripe">
+			        	<input type="checkbox"
+			        	onclick=handleclick(this) checked value=${index}>
+			        	<span>`+data['name'] +`</span>
+			            <i class="fa fa-trash" aria-hidden="true" onclick="_remove(${index})">
+			            </i>
+			        </li>
+			    </ul>`
+	        :
+    		`<ul class="maincontent"><li><input type="checkbox" onclick=handleclick(this) 
+    			value=${index}>
+    				<span>`+data['name']+`</span>
+				<i class="fa fa-trash" aria-hidden="true" onclick="_remove(${index})"></i>
+				</li>
+			</ul>`;
+        })
+        _tabBody.innerHTML=_mylist;
+    }
+}
+function handleclick(check){
+    if(check.checked){
+        listArr[check.value]['status']=true;
+        check.parentNode.classList.add("stripe");
+
+    }else{
+        listArr[check.value]['status']=false;
+        check.parentNode.classList.remove("stripe");
+    }
+}
+
+function _remove(index){
+    listArr.splice(index,1);
+    display(listArr);   
+}
+function _clear(){
+    listArr = [];
+    display(listArr);
+}
+
+function _search(){
+    var input_,filter_key,i;
+        input_=document.getElementById("searchitem");
+        filter_key = input_.value.toLowerCase();
+    let filtered_users = listArr.filter((key)=>{
+        key = key['name'].toLowerCase();
+       	return key.indexOf(filter_key) > -1; 
+  	});
+  	console.log("filtered_users--+++", filtered_users);
+  	display(null, filtered_users);
+}
+</script>
+   
+</body>
+</html>

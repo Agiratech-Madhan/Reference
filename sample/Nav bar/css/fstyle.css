@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    max-width: 1150px;
+    background-color: blue;
+    margin: auto;
+}
+ul{
+    list-style: none;
+}
+.footer{
+    background-color: rgb(106, 150, 209);
+    padding: 70px 0;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.footer-col-1{
+    width: 25%;
+    padding: 0  15px;
+}
+footer-col-1 h3{
+    font-size: 15px;
+    text-transform: capitalize;
+    color: black;
+    margin-bottom: 25px;
+    font-weight: 500px;
+    position: relative;
+}
+footer-col-1 h3::before{
+    content:'' ;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: violet;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}

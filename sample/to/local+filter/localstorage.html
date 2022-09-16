@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    var veggies=["brown","sam","hello"];
+    localStorage.setItem("veggies",JSON.stringify(veggies));
+    var veggies=JSON.parse(localStorage.getItem("veggies"));
+   </script> 
+   function setStyles() {
+    const currentColor = localStorage.getItem('bgcolor');
+    const currentFont = localStorage.getItem('font');
+    const currentImage = localStorage.getItem('image');
+  
+    document.getElementById('bgcolor').value = currentColor;
+    document.getElementById('font').value = currentFont;
+    document.getElementById('image').value = currentImage;
+  
+    htmlElem.style.backgroundColor = `#${currentColor}`;
+    pElem.style.fontFamily = currentFont;
+    imgElem.setAttribute('src', currentImage);
+  }
+</body>
+</html>

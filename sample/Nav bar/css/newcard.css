@@ -1,0 +1,472 @@
+*{
+    margin: 0;
+    padding: 0;
+   /* box-sizing: border-box;
+   font-family: sans-serif; */
+}
+nav{
+  background-color: #1b1b1b;
+  color: rgb(252, 252, 252); 
+  
+}
+/* .ex{
+  
+  margin-left: 18.8%;
+ 
+}
+.aaaa{
+  width: 100%;
+  background-color: #1b1b1b;
+} */
+nav:after{
+  content: '';
+  clear: both;
+  display: table;
+
+}
+nav .logo{
+  float: left;
+  color: white;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 70px;
+  padding:0px;
+  /* margin-left: 0px; */
+  /* display: none; */
+
+}
+nav ul{
+  float: right;
+  list-style-type: none;
+  margin-right: 0px;
+  position: relative;
+  
+
+}
+nav ul li{
+  float: left;
+  display: inline-block;
+  background: #1b1b1b;
+  margin: 0 5px;
+
+}
+nav ul li a{
+  color: white;
+  text-decoration: none;
+  line-height: 70px;
+  font-size: 18px;
+  padding: 8px 15px;
+}
+nav ul li a:hover{
+  border-radius: 5px;
+  color: cyan;
+  box-shadow:0 0 5px #33ffff ,
+            0 0 5px #66ffff ;
+}
+nav ul  ul li a:hover
+{
+  color: cyan;
+  box-shadow:none;
+}
+nav ul ul{
+  position: absolute;
+  top: 90px;
+  border-top: 3px solid cyan;
+  opacity: 0;
+  visibility: hidden;
+  transition: top .3s;
+}
+nav ul ul ul{
+  border-top:none;
+
+}
+nav ul li:hover > ul{
+  top: 70px;
+
+  opacity: 1;
+  visibility: visible;
+
+}
+
+nav ul ul li a{
+  line-height: 50px;
+}
+nav ul ul li{
+  position: relative;
+  margin: 0px;
+  width: 150px;
+  float: none;
+  display: list-item;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+nav ul ul ul li{
+  position: relative;
+  top: -70px;
+  left: 150px;
+}
+span .fa-plus{
+  margin-left: 40px;
+  font-size: 15px;
+}
+nav ul li ul{
+  position: absolute;
+}
+
+
+
+
+
+
+
+
+h1{
+  text-align: center;
+}
+
+/* .cards{
+    background-color: white;
+    flex-basis: 300px;
+    
+    height: 400px;
+    margin: 30px;
+    border-radius: 10px;
+} */
+.cards{
+  background-color: white;
+  width: 300px;
+  height: 400px;
+  /* margin-left: auto;
+  margin-right: auto;
+  margin-top: auto; */
+  margin: auto;
+
+  /* justify-content: center; */
+  /* margin: 30px; */
+  /* gap: 25px; */
+  /* border-radius: 10px; */
+}
+/* <img src="/home/agira/Desktop/Madhan/sample/Nav bar/html/image.jpeg" alt="" width="300px" height="160px"> */
+
+/* .container1{
+    display: flex;
+    justify-content: center;      
+    flex-wrap: wrap;  
+    
+} */
+.container1{
+  width: 1013px;
+  /* width: auto; */
+    display: flex;
+    /* justify-content: center;       */
+    flex-wrap: wrap;  
+    row-gap: 40px;
+    margin: auto;
+    /* column-gap: 30px; */
+    /* gap: 30px; */
+    
+}
+
+.content1{
+    text-align: center;
+    
+    
+    background-color: white;
+}
+.content1 a{
+    background-color:rgb(165, 97, 42);
+    color: white;
+    padding: 10px;
+    display: block;
+    text-align:center;
+    text-decoration: none;
+    border-radius: 10px;
+
+}
+.content1 a:hover{
+  opacity: 0.8;
+  /* background-color: pink; */
+  /* border-radius: 10px; */
+}
+/* icons */
+.widgets_div {
+    /* border-bottom: thin #edf1f2 solid; */
+    padding: 15px;
+    left: 0;
+    top: 0;
+    justify-content: space-between;
+    display: flex;
+  width: 90px;
+  height: 30px;
+  margin:0;
+  }
+  
+  .widgets_div .icon_div {
+    display: inline;
+    position: relative;
+    margin-left: 0px;
+    width: 21px;
+    height: 30px;
+    
+    color: rgb(165, 97, 42);
+  }
+  
+  .widgets_div .icon_div span i {
+    font-size: 24px;
+  }
+  
+  /* .widgets_div .text_div {
+    display: inline;
+    
+  }
+   */
+  .widgets_div .text_div span {
+    color: #58666e;
+    font-size: 12px;
+    top: 0;
+    right: 0; 
+    padding: 5px;
+  }
+  
+  
+.mainitem{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+   
+}
+.item1,.item2,.item3,.item4{
+    margin: 10px;
+}
+ 
+  .text_div{
+    padding: 5px;
+  }
+
+  .sample{
+    position: relative;
+    top:-1rem;
+    margin: auto;
+    width:75%;
+    background-color:rgb(6, 10, 44);
+}
+h3{
+ background-color: transparent;
+  color: white;
+  padding: 10px;
+  display: block;
+  text-align:center;
+  text-decoration: none;
+}
+
+
+  /* .cards:nth-child(2n) {
+    flex-break: after;
+  
+  } */
+  /* .break {
+    flex-basis: 100%;
+    height: 0;
+  } */
+/* 
+  @media only screen and (max-width: 992px) {
+    .main-card {
+        width: 50%;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .b.main-card {
+        width: 33.33%;
+    }
+}
+@media only screen and (max-width: 576px) {
+    .b.main-card {
+        width: 100%;
+    }
+} */
+
+
+
+
+
+  /* @media (min-width:400px)and (max-width:1080px) {
+    .break{
+      display: none;
+    }
+    
+  } */
+
+
+
+
+
+
+
+
+  .cards-image{
+   
+    height:160px;
+    
+    background-size: cover;
+    
+}
+.car-11{
+  background-image: url('/home/agira/Desktop/Madhan/sample/Nav bar/html/image.jpeg');
+border-radius: 10px;
+}
+.car-12{
+background-image: url('/home/agira/Desktop/Madhan/sample/Nav bar/html/image11.jpg');
+border-radius: 5px;
+}
+.icon-left{
+  /* position: absolute; */
+  float: right;
+  /* justify-content: end; */
+  padding: 5px;
+  height: 20px;
+  /* fill: blue; */
+  /* filter: blue; */
+
+    /* filter: invert(20%) brightness(118%) contrast(119%); */
+
+  /* justify-content: end; */
+  /* right: 0; */
+  
+}
+.icon-left:hover{
+  transition:  all .2s ease-in-out;
+  /* color: mediumblue;
+transition-property: background-color; */
+  transform: scale(1.7);
+  
+  
+}
+
+/* .grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); } */
+/* .example{
+  position: relative;
+  top:-160px;
+  /* justify-content: end; */
+  
+/* } */ 
+
+/* @media all and (max-width:968px) {
+  nav ul{
+    margin-right: 0px;
+    float: left;
+
+  }
+  nav ul li, nav ul ul li{
+    display: block;
+    width: 100%;
+  }
+  nav ul ul{
+    top:70px;
+    position: static;
+  }
+  .icon{
+    display: block;
+    color: white;
+    position: absolute;
+  }
+  nav ul a:hover{
+    box-shadow: none;
+  }
+  
+} */
+@media only screen and (min-width:695px)and (max-width: 992px) {
+  .main-card {
+      width: 50%;
+  }
+  .container1,.ex{
+    width: 695px;
+  }
+  .icon{
+    display: none;
+  }
+  
+  /* nav ul{
+    margin-right: 18%;
+    
+  }
+  .logo{
+    margin-left:15%;
+  } */
+  /* nav ul{
+    margin-right: 100px;
+    
+  }
+  .logo{
+    margin-left:100px;
+  } */
+}
+@media only screen and (min-width: 992px)  {
+  .main-card {
+      width: 33.33%;
+  }
+  .container1{
+    justify-content: center;
+  }
+  .ex{
+    width: 992px;
+  }
+  .icon{
+    display: none;
+  }
+  /* nav ul{
+    margin-right: 18%;
+    
+  }
+  .logo{
+    margin-left:15%;
+  } */
+}
+@media only screen and (max-width:708px) {
+  .main-card {
+      width: 100%;
+  }
+  .container1,.ex{
+    width: 400px;
+  }
+
+  nav ul{
+    display: none;
+    
+   }
+
+   .icon{
+    float: right;
+    /* align-items: center; */
+    /* justify-content: end; */
+    margin-right: 20px;
+    margin-top: 25px;
+    /* margin: ; */
+   }
+   .icon:hover {
+    color: red;
+   }
+  }
+  /* }
+  nav ul{
+    margin-right: 0px;
+    float: left;
+
+  }
+  nav ul li, nav ul ul li{
+    display: block;
+    width: 100%;
+  }
+  nav ul ul{
+    top:70px;
+    position: static;
+  }
+  .icon{
+    display: block;
+    color: white;
+    position: absolute;
+    /* display: none; */
+  /* } */
+  /* nav ul a:hover{
+    box-shadow: none;
+  } */ 
+
